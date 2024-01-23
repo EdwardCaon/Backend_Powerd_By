@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class NewFavGameRequest {
 
-    private String token  ;
-    private Integer idGame ;
+    private String token;
+    private Integer idGame;
 }

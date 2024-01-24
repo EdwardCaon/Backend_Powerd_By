@@ -16,6 +16,7 @@ public class FavPlayerResponse {
         private String lastname;
         private Double height;
         private Double weight;
+        private String img;
         //ruolo principale
         //numero maglia
         //nazionalita

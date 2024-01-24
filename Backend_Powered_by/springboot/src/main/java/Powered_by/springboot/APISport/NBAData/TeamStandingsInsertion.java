@@ -17,12 +17,12 @@ public class TeamStandingsInsertion {
     private static final String username = "backend";
     private static final String password = "111";
 
-    @Scheduled(cron = "0 5 4 * * *") // Esegui alle 4:5 ogni giorno
+    @Scheduled(cron = "0 45 16 * * *") // Esegui alle 4:5 ogni giorno
     public void teamStandingsEastInsertionAtScheduledTime() {
         processStandingsDataForConference("East");
     }
 
-    @Scheduled(cron = "0 7 4 * * *") // Esegui alle 4:7 ogni giorno
+    @Scheduled(cron = "0 48 16 * * *") // Esegui alle 4:7 ogni giorno
     public void teamStandingsWestInsertionAtScheduledTime() {
         processStandingsDataForConference("West");
     }

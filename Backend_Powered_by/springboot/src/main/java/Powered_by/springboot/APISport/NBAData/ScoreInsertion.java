@@ -20,7 +20,7 @@ public class ScoreInsertion {
     private static final String USERNAME = "backend";
     private static final String PASSWORD = "111";
 
-    @Scheduled(cron = "0 0 4 * * *") // Esegui alle 4:00 ogni giorno
+    @Scheduled(cron = "0 0 17 * * *") // Esegui alle 4:00 ogni giorno
     public void insertScoresAtScheduledTime() {
         System.out.println("Aggiornamento punteggi in corso");
         try {

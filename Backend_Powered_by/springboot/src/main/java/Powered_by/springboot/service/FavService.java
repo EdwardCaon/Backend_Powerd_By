@@ -178,7 +178,8 @@ public class FavService {
             String lastname = (String) result[2];
             Double height = (Double) result[3];
             Double weight = (Double) result[4];
-            FavPlayerResponse favPlayerResponses = new FavPlayerResponse(idPlayer, firsname, lastname, height, weight);
+            String img = (String) result [5];
+            FavPlayerResponse favPlayerResponses = new FavPlayerResponse(idPlayer, firsname, lastname, height, weight, img);
             favTeamResults.add(favPlayerResponses);
         }
         return favTeamResults;

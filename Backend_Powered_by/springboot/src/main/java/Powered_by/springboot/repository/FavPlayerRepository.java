@@ -18,8 +18,9 @@ public interface FavPlayerRepository extends JpaRepository<FavPlayer, Long> {
      * @param tmpIdUser id dell utente temporaneo per trovare i suoi preferiti
      * @return la lista di preferiti associata all utente
      */
-    @Query("SELECT fp.player.idPlayer, fp.player.firstname, fp.player.lastname, fp.player.height, fp.player.weight " +
+    @Query("SELECT fp.player.idPlayer, fp.player.firstname, fp.player.lastname, fp.player.height, fp.player.weight, pd.img  " +
             "FROM FavPlayer fp " +
+            "JOIN PlayerDetails  pd on fp.player.idPlayer = pd.player.idPlayer " +
             "WHERE fp.user.idUser = :tmpIdUser ")
     List<Object[]> getFavPlayer(Integer tmpIdUser);
 

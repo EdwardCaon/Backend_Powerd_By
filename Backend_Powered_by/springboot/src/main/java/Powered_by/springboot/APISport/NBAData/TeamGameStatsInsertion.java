@@ -19,13 +19,13 @@ public class TeamGameStatsInsertion {
     private static final String USERNAME = "backend";
     private static final String PASSWORD = "111";
 
-    @Scheduled(cron = "0 15 4 * * *") // Esegui alle 4:15 ogni giorno
+    @Scheduled(cron = "0 15 17 * * *") // Esegui alle 4:15 ogni giorno
     public void runFirstBatch() {
         System.out.println("Inizio inserimento team game stats");
         runBatch(0, 10);
     }
 
-    @Scheduled(cron = "0 17 4 * * *") // Esegui alle 4:17 ogni giorno
+    @Scheduled(cron = "0 18 17 * * *") // Esegui alle 4:17 ogni giorno
     public void runSecondBatch() {
         runBatch(10, 10);
         System.out.println("Fine inserimento team game stats");

@@ -29,6 +29,11 @@ public class UserController {
         return userService.signin(request);
     }
 
+    @PostMapping("/delete")
+    public ResponseEntity<?> deleteUser(@RequestBody @Valid DeleteRequest request) {
+        return userService.deleteUser(request);
+    }
+
     @PostMapping("update/firstname")
     public UpdateFirstnameResponse updateFirstname(@RequestBody @Valid UpdateFirstnameRequest request) {
         return userService.updateFirstname(request);

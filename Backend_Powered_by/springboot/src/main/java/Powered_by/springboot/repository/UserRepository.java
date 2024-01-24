@@ -44,5 +44,13 @@ public interface UserRepository extends JpaRepository<User, Integer> {
             @Param("idUser") int idUser,
             @Param("email") String email);
 
+    @Query("SELECT u FROM User  u WHERE  u.idUser = :idUser AND u.password = :password")
+    Optional<User> findByIdAndAndPassword(
+            @Param("idUser") int idUser,
+            @Param("password") String password);
 
+    @Modifying
+    @Query("DELETE User WHERE idUser = :idUser")
+    void deleteUser(
+            @Param("idUser") int idUser);
 }

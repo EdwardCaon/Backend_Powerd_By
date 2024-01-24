@@ -1,5 +1,6 @@
 package Powered_by.springboot.service;
 
+import Powered_by.springboot.entity.FavGame;
 import Powered_by.springboot.payload.response.UpdateEmailResponse;
 import Powered_by.springboot.entity.User;
 import Powered_by.springboot.payload.request.*;
@@ -7,6 +8,9 @@ import Powered_by.springboot.payload.response.AuthResponse;
 import Powered_by.springboot.payload.response.FavTeamResponse;
 import Powered_by.springboot.payload.response.UpdateFirstnameResponse;
 import Powered_by.springboot.payload.response.UpdateLastnameResponse;
+import Powered_by.springboot.repository.FavGameRepository;
+import Powered_by.springboot.repository.FavPlayerRepository;
+import Powered_by.springboot.repository.FavTeamRepository;
 import Powered_by.springboot.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -24,6 +28,9 @@ import java.util.Optional;
 public class UserService {
     private final UserRepository userRepository;
     private  final TokenService tokenService;
+    private final FavGameRepository favGameRepository;
+    private final FavPlayerRepository favPlayerRepository;
+    private final FavTeamRepository favTeamRepository;
 
 
     /**
@@ -101,5 +108,20 @@ public class UserService {
         userRepository.updateEmail(findIdUser(request.getToken()), request.getEmail());
         UpdateEmailResponse updateEmailResponse = new UpdateEmailResponse( request.getEmail());
         return updateEmailResponse;
+    }
+    @Transactional
+    public ResponseEntity<?> deleteUser(DeleteRequest request) {
+        Optional<User> u = userRepository.findByIdAndAndPassword(findIdUser(request.getToken()), DigestUtils.sha256Hex(request.getPassword()));
+        if (u.isPresent()) {
+        //inserisce il fav game
+            favGameRepository.deleteAllFavGameForIdUser(findIdUser(request.getToken()));
+            favPlayerRepository.deleteAllFavPlayerForIdUser(findIdUser(request.getToken()));
+            favTeamRepository.deleteAllFavTeamForIdUser(findIdUser(request.getToken()));
+            userRepository.deleteUser(findIdUser(request.getToken()));
+            return new ResponseEntity<>("User deleted", HttpStatus.OK);
+        } else {
+            //Non cancella
+            return new ResponseEntity<>("Wrong password ", HttpStatus.NOT_ACCEPTABLE);
+        }
     }
 }

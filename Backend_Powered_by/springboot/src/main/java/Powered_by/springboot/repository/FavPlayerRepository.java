@@ -58,5 +58,8 @@ public interface FavPlayerRepository extends JpaRepository<FavPlayer, Long> {
             "WHERE fp.user.idUser = :tmp_idUser")
     List<Object[]> getIdFavPlayer(@Param("tmp_idUser") Integer tmp_idUser);
 
-
+    @Modifying
+    @Query(value = "DELETE FROM fav_player WHERE id_user = :idUser", nativeQuery = true)
+    void deleteAllFavPlayerForIdUser(
+            @Param("idUser") int idUser);
 }

@@ -44,6 +44,10 @@ public interface FavGameRepository extends JpaRepository<FavGame, Integer> {
     @Query(value = "DELETE FROM fav_game WHERE id_user = :idUser AND id_game = :idGame", nativeQuery = true)
     void deleteFavGame( @Param("idGame") int idGame , @Param("idUser") int idUser);
 
+    @Modifying
+    @Query(value = "DELETE FROM fav_game WHERE id_user = :idUser ", nativeQuery = true)
+    void deleteAllFavGameForIdUser(  @Param("idUser") int idUser);
+
     @Query("SELECT " +
             "g.idGame, g.start, " +
             "t.nameTeam, t.logo, t.colour, s.p1, s.p2, s.p3, s.p4, s.p5, " +

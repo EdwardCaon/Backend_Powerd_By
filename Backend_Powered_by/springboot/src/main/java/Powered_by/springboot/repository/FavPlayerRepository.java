@@ -56,7 +56,7 @@ public interface FavPlayerRepository extends JpaRepository<FavPlayer, Long> {
             "fp.player.idPlayer " +
             "FROM FavPlayer fp " +
             "WHERE fp.user.idUser = :tmp_idUser")
-    List<Object[]> getIdPlayerTeam(@Param("tmp_idUser") int tmp_idUser);
+    List<Object[]> getIdFavPlayer(@Param("tmp_idUser") Integer tmp_idUser);
 
 
 }

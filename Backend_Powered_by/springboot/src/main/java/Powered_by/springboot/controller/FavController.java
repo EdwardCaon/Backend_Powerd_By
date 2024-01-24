@@ -55,7 +55,7 @@ public class FavController {
     public List<FavGameResponse> getFavGame(@RequestBody @Valid TokenUserRequest request) {
         return favService.getFavGame(request);
     }
-    @PostMapping("/get/idgame")
+    @PostMapping("/get/idGame")
     public List<FavGameIdResponse> getIdFavGame(@RequestBody @Valid TokenUserRequest request) {
         return favService.getIdFavGame(request);
     }

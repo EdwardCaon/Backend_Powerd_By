@@ -9,7 +9,8 @@ import java.util.List;
 
 public interface PlayerRepository  extends JpaRepository<Player, Integer> {
 
-    @Query(value = "SELECT p.date_of_birthday, c.name_country , c.flag , p.height ,p.weight, pd.pos, pd.shirt_number, t.name_team , t.logo " +
+    @Query(value = "SELECT p.date_of_birthday, c.name_country , c.flag , p.height ,p.weight, pd.pos, pd.shirt_number, t.name_team , t.logo, " +
+            "p.firstname, p.lastname, pd.img, t.colour  " +
     "FROM player p " +
     "JOIN country c on p.country = c.id_country " +
     "JOIN player_details pd on p.id_player = pd.id_player " +

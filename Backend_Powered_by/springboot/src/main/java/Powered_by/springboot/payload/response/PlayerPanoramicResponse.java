@@ -19,5 +19,9 @@ public class PlayerPanoramicResponse {
     private Double weight;
     private String pos;
     private Integer shirtNumber;
+    private String firstname;
+    private String lastname;
+    private String img;
+    private String colour;
 
 }

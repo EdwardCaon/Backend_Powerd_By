@@ -17,6 +17,7 @@ import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Service
 public class PlayerService {
 
@@ -100,10 +101,10 @@ public class PlayerService {
             playerResponse.setShirtNumber(result[6] != null ? ((Integer) result[6]).intValue() : 0);
             playerResponse.setNameTeam(result[7] != null ? (String) result[7] :"" );
             playerResponse.setLogoTeam( result[8] != null ? (String) result[8] : "");
-            playerResponse.setFirstname(result[9] != null ? (String) result[8] : "");
-            playerResponse.setLastname(result[9] != null ? (String) result[8] : "");
-            playerResponse.setImg(result[10] != null ? (String) result[8] : "");
-            playerResponse.setColour(result[11] != null ? (String) result[8] : "");
+            playerResponse.setFirstname(result[9] != null ? (String) result[9] : "");
+            playerResponse.setLastname(result[10] != null ? (String) result[10] : "");
+            playerResponse.setImg(result[11] != null ? (String) result[11] : "");
+            playerResponse.setColour(result[12] != null ? (String) result[12] : "");
 
 
             playerList.add(playerResponse);

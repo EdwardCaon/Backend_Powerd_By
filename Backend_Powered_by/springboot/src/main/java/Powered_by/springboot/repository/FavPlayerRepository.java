@@ -21,7 +21,8 @@ public interface FavPlayerRepository extends JpaRepository<FavPlayer, Long> {
     @Query("SELECT fp.player.idPlayer, fp.player.firstname, fp.player.lastname, fp.player.height, fp.player.weight, pd.img  " +
             "FROM FavPlayer fp " +
             "JOIN PlayerDetails  pd on fp.player.idPlayer = pd.player.idPlayer " +
-            "WHERE fp.user.idUser = :tmpIdUser ")
+            "WHERE fp.user.idUser = :tmpIdUser " +
+            "GROUP BY fp.player.idPlayer")
     List<Object[]> getFavPlayer(Integer tmpIdUser);
 
 
